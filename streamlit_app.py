@@ -53,7 +53,7 @@ if prompt := st.chat_input("Ask your question:"):
                     model="google/gemma-3-27b-it", 
                     messages=messages, 
                     # messages=chat_messages, 
-                    max_tokens=128000
+                    max_tokens=1000
                 )
 
                 response= completion.choices[0].message["content"]
