@@ -2,12 +2,11 @@ import streamlit as st
 from huggingface_hub import InferenceClient
 
 # Streamlit page setup
-st.set_page_config(page_title="GemmaGPT", page_icon="🤗💬")
-st.title("🤗💬 GemmaGPT App")
+st.set_page_config(page_title="Fic_Gemma3_27B", page_icon="🤗💬")
+st.title("🤗💬 Fic_Gemma App")
 
 st.markdown("""
-This AI chat app uses the **Google Gemma-2-27B** model, a cutting-edge language model designed for complex conversational tasks. 
-Gemma is a family of lightweight, state-of-the-art open models from Google, built from the same research and technology used to create the Gemini models. 
+Aplikasi obrolan AI ini menggunakan model Google Gemma-3-27B, sebuah model bahasa canggih yang dirancang untuk tugas percakapan yang kompleks.Aplikasi obrolan AI ieu ngagunakeun model Google Gemma-3-27B, model basa nu panganyarna dimaksudkeun pikeun tugas ngobrol nu kompleks.
 """)
 
 # Hugging Face API Key
@@ -17,7 +16,7 @@ client = InferenceClient(api_key=API_KEY)
 # Initialize chat history
 if "messages" not in st.session_state:
     st.session_state.messages = [
-        {"role": "assistant", "content": "Hi! I'm here to assist you. How can I help?"}
+        {"role": "assistant", "content": "Apa Kabar Teman-teman! Ada yang bisa saya bantu? Sapa nuung ka kawan-kawan! Aya tipeu nu bisa diping pin sapadana?"}
     ]
 
 # Display chat messages
@@ -51,10 +50,10 @@ if prompt := st.chat_input("Ask your question:"):
                 ]
 
                 completion = client.chat.completions.create(
-                    model="google/gemma-2-27b-it", 
+                    model="google/gemma-3-27b-it", 
                     messages=messages, 
                     # messages=chat_messages, 
-                    max_tokens=500
+                    max_tokens=128000
                 )
 
                 response= completion.choices[0].message["content"]
